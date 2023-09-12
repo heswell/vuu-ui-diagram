@@ -77,22 +77,25 @@ header[data-align='center'] {
   --connectionManager-width: 0%;
   --instruments-height: 100%;
   --prices-height: 0%;
-  --table-ui-width: 50%;
-  --table-ds-width: 50%;
+  --table-ui-width: 60%;
+  --table-ds-width: 40%;
   --table-ds-margin: 10px;
 }
 
 .vuu-stage-5 {
   --browser-width: 100%;
   --client-width: 100%;
+  /* --filterbar-display: flex; */
+  --filterbar-height: 100px;
+  --table-main-height: 70%;
   --worker-width: 0%;
   --server-width: 0%;
-  --tables-width: 90%;
-  --connectionManager-width: 10%;
+  --tables-width: 100%;
+  --connectionManager-width: 0%;
   --instruments-height: 100%;
   --prices-height: 0%;
-  --table-ui-width: 50%;
-  --table-ds-width: 50%;
+  --table-ui-width: 60%;
+  --table-ds-width: 40%;
   --table-ds-margin: 10px;
 }
 
@@ -103,14 +106,28 @@ header[data-align='center'] {
   --server-width: 0%;
   --tables-width: 90%;
   --connectionManager-width: 10%;
-  --instruments-height: 50%;
-  --prices-height: 50%;
-  --table-ui-width: 50%;
-  --table-ds-width: 50%;
+  --instruments-height: 100%;
+  --prices-height: 0%;
+  --table-ui-width: 60%;
+  --table-ds-width: 40%;
   --table-ds-margin: 10px;
 }
 
 .vuu-stage-7 {
+  --browser-width: 100%;
+  --client-width: 100%;
+  --worker-width: 0%;
+  --server-width: 0%;
+  --tables-width: 90%;
+  --connectionManager-width: 10%;
+  --instruments-height: 50%;
+  --prices-height: 50%;
+  --table-ui-width: 60%;
+  --table-ds-width: 40%;
+  --table-ds-margin: 10px;
+}
+
+.vuu-stage-8 {
   --browser-width: 70%;
   --client-width: 100%;
   --worker-width: 0%;
@@ -119,26 +136,11 @@ header[data-align='center'] {
   --connectionManager-width: 10%;
   --instruments-height: 50%;
   --prices-height: 50%;
-  --table-ui-width: 50%;
-  --table-ds-width: 50%;
+  --table-ui-width: 60%;
+  --table-ds-width: 40%;
   --table-ds-margin: 10px;
 }
 
-.vuu-stage-8 {
-  --browser-width: 70%;
-  --client-width: 70%;
-  --worker-width: 30%;
-  --worker-border: dashed;
-  --worker-padding: 36px 6px 6px 6px;
-  --server-width: 30%;
-  --tables-width: 90%;
-  --connectionManager-width: 10%;
-  --instruments-height: 50%;
-  --prices-height: 50%;
-  --table-ui-width: 50%;
-  --table-ds-width: 50%;
-  --table-ds-margin: 10px;
-}
 .vuu-stage-9 {
   --browser-width: 70%;
   --client-width: 70%;
@@ -150,8 +152,23 @@ header[data-align='center'] {
   --connectionManager-width: 10%;
   --instruments-height: 50%;
   --prices-height: 50%;
-  --table-ui-width: 50%;
-  --table-ds-width: 50%;
+  --table-ui-width: 60%;
+  --table-ds-width: 40%;
+  --table-ds-margin: 10px;
+}
+.vuu-stage-10 {
+  --browser-width: 70%;
+  --client-width: 70%;
+  --worker-width: 30%;
+  --worker-border: dashed;
+  --worker-padding: 36px 6px 6px 6px;
+  --server-width: 30%;
+  --tables-width: 90%;
+  --connectionManager-width: 10%;
+  --instruments-height: 50%;
+  --prices-height: 50%;
+  --table-ui-width: 60%;
+  --table-ds-width: 40%;
   --table-ds-margin: 10px;
   --worker-main-opacity: 1;
 }
@@ -229,26 +246,16 @@ header[data-align='center'] {
   flex-basis: var(--prices-height, 50%);
 }
 
-.vuu-stage-4 .vuu-table-prices,
 .vuu-stage-3 .vuu-table-prices,
-.vuu-stage-5 .vuu-table-prices {
+.vuu-stage-4 .vuu-table-prices,
+.vuu-stage-5 .vuu-table-prices,
+.vuu-stage-6 .vuu-table-prices {
   --padding-top: 0;
   margin: 0;
 }
 
 .vuu-table-prices > header {
   display: var(--prices-header-display, block);
-}
-
-.vuu-table-ui {
-  flex-basis: var(--table-ui-width, 50%);
-  margin: var(--table-ui-margin, 10px);
-}
-.vuu-table-ds {
-  justify-content: center;
-  display: flex;
-  flex-basis: var(--table-ds-width, 50%);
-  margin: var(--table-ds-margin, 0);
 }
 
 .vuu-client-connectionManager {
@@ -369,8 +376,8 @@ header[data-align='center'] {
 .vuu-dataflow {
   display: var(--server-data-display, none);
   height: fit-content;
-  position: absolute;
-  top: calc(50% - 100px);
+  position: var(--vuu-dataflow-position, absolute);
+  top: var(--vuu-dataflow-top, calc(50% - 100px));
   width: fit-content;
   left: 0;
   z-index: 100;
@@ -381,8 +388,8 @@ header[data-align='center'] {
   left: 60%;
 }
 
-.vuu-stage-8 .vuu-server,
 .vuu-stage-9 .vuu-server,
+.vuu-stage-10 .vuu-server,
 .vuu-server:hover {
   --server-data-display: block;
 }
@@ -391,9 +398,9 @@ header[data-align='center'] {
   left: 70%;
 }
 
-.vuu-stage-5 .vuu-dataflow[data-align='right'],
 .vuu-stage-6 .vuu-dataflow[data-align='right'],
 .vuu-stage-7 .vuu-dataflow[data-align='right'],
-.vuu-stage-8 .vuu-dataflow[data-align='right'] {
+.vuu-stage-8 .vuu-dataflow[data-align='right'],
+.vuu-stage-9 .vuu-dataflow[data-align='right'] {
   --server-data-display: block;
 }

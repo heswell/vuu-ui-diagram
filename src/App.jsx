@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { SvgTable } from './svg-components/svg-table';
-import { SvgDatasource } from './svg-components/svg-datasource';
+import { SvgDataflow, SvgDatasource } from './svg-components';
 import { SvgSingleton } from './svg-components/svg-singleton';
-import { SvgDataflow } from './svg-components/svg-dataflow';
 import { SvgDataflowCompact } from './svg-components/svg-dataflow-compact';
+import { DataTable, RemoteDataSource } from './components';
+
 import './App.css';
 
 const stages = [
@@ -44,39 +45,13 @@ function App() {
             <div className="vuu-section vuu-tables">
               <div className="vuu-section vuu-table vuu-table-instruments">
                 <header>Instruments</header>
-                <div className="vuu-section vuu-table-ui">
-                  <SvgTable />
-                </div>
-                <div className="vuu-section vuu-table-ds">
-                  <header data-align="center">
-                    <em>Remote</em> Datasource
-                  </header>
-                  <SvgDatasource />
-                  <div className="vuu-dataflow">
-                    <SvgDataflow />
-                  </div>
-                  <div className="vuu-dataflow" data-align="right">
-                    <SvgDataflow />
-                  </div>
-                </div>
+                <DataTable />
+                <RemoteDataSource />
               </div>
               <div className="vuu-section vuu-table vuu-table-prices">
                 <header>Prices</header>
-                <div className="vuu-section vuu-table-ui">
-                  <SvgTable />
-                </div>
-                <div className="vuu-section vuu-table-ds">
-                  <header data-align="center">
-                    <em>Remote</em> Datasource
-                  </header>
-                  <SvgDatasource />
-                  <div className="vuu-dataflow">
-                    <SvgDataflow />
-                  </div>
-                  <div className="vuu-dataflow" data-align="right">
-                    <SvgDataflow />
-                  </div>
-                </div>
+                <DataTable />
+                <RemoteDataSource />
               </div>
             </div>
             <div className="vuu-section vuu-client-connectionManager">
@@ -133,60 +108,14 @@ function App() {
           previous
         </button>
         <div className="vuu-stage-buttons">
-          <button
-            className={`${index === 0 ? 'vuu-button-active' : 'vuu-button'}`}
-            onClick={() => setIndex(0)}
-          >
-            1
-          </button>
-          <button
-            className={`${index === 1 ? 'vuu-button-active' : 'vuu-button'}`}
-            onClick={() => setIndex(1)}
-          >
-            2
-          </button>
-          <button
-            className={`${index === 2 ? 'vuu-button-active' : 'vuu-button'}`}
-            onClick={() => setIndex(2)}
-          >
-            3
-          </button>
-          <button
-            className={`${index === 3 ? 'vuu-button-active' : 'vuu-button'}`}
-            onClick={() => setIndex(3)}
-          >
-            4
-          </button>
-          <button
-            className={`${index === 4 ? 'vuu-button-active' : 'vuu-button'}`}
-            onClick={() => setIndex(4)}
-          >
-            5
-          </button>
-          <button
-            className={`${index === 5 ? 'vuu-button-active' : 'vuu-button'}`}
-            onClick={() => setIndex(5)}
-          >
-            6
-          </button>
-          <button
-            className={`${index === 6 ? 'vuu-button-active' : 'vuu-button'}`}
-            onClick={() => setIndex(6)}
-          >
-            7
-          </button>
-          <button
-            className={`${index === 7 ? 'vuu-button-active' : 'vuu-button'}`}
-            onClick={() => setIndex(7)}
-          >
-            8
-          </button>
-          <button
-            className={`${index === 8 ? 'vuu-button-active' : 'vuu-button'}`}
-            onClick={() => setIndex(8)}
-          >
-            9
-          </button>
+          {stages.map((stage, i) => (
+            <button
+              className={`${index === i ? 'vuu-button-active' : 'vuu-button'}`}
+              onClick={() => setIndex(i)}
+            >
+              {i + 1}
+            </button>
+          ))}
         </div>
         <button className="vuu-button" onClick={nextStage}>
           next

@@ -1,0 +1,40 @@
+.vuu-table-ui {
+  --vuu-dataflow-position: relative;
+  --vuu-dataflow-top: auto;
+
+  display: flex;
+  flex-basis: var(--table-ui-width, 50%);
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: var(--table-ui-margin, 10px);
+}
+
+.vuu-stage-1 .vuu-table-ui .vuu-dataflow,
+.vuu-stage-2 .vuu-table-ui .vuu-dataflow,
+.vuu-stage-3 .vuu-table-ui .vuu-dataflow {
+  flex: 0 0 0;
+}
+
+.vuu-table-main,
+.vuu-table-filterbar {
+  align-items: center;
+  display: flex;
+}
+
+.vuu-section.vuu-table-filterbar {
+  /* display: var(--filterbar-display, none); */
+  flex-basis: var(--filterbar-height, 0);
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.vuu-section.vuu-table-main {
+  flex-basis: var(--table-main-height, 100%);
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.SvgFilterbar {
+  height: 100%;
+  width: 100%;
+}
